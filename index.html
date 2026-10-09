@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>Happy Birthday, Mum! 🎂</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- floating decorations layer (shared across whole page) -->
+  <div id="decor-layer" aria-hidden="true"></div>
+
+  <!-- Music control, always visible -->
+  <button id="music-btn" class="music-btn" aria-pressed="false">
+    <span class="music-icon">♫</span>
+    <span class="music-label">Birthday Music</span>
+  </button>
+  <audio id="bgm" loop preload="none">
+    <source src="audio/birthday-music.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="chime" preload="auto">
+    <source src="audio/cake-chime.mp3" type="audio/mpeg" />
+  </audio>
+
+  <main>
+
+    <!-- SCENE 1: GREETING + CAKE -->
+    <section id="scene-greeting" class="scene scene-greeting">
+      <div class="scene-inner">
+        <p class="eyebrow">A little surprise for you</p>
+
+        <div class="hero-photo-wrap">
+          <img id="hero-photo" class="hero-photo" alt="Mum" />
+        </div>
+
+        <h1 id="greeting-title" class="greeting-title"></h1>
+        <p id="greeting-message" class="greeting-message"></p>
+
+        <div class="cake-wrap">
+          <button id="cake-btn" class="cake-btn" aria-label="Tap the birthday cake for a surprise">
+            <svg viewBox="0 0 320 300" class="cake-svg" xmlns="http://www.w3.org/2000/svg">
+              <!-- plate -->
+              <ellipse cx="160" cy="268" rx="130" ry="16" fill="#f3d9c0"/>
+              <!-- bottom tier -->
+              <rect x="55" y="190" width="210" height="70" rx="14" fill="#f8c9d8"/>
+              <rect x="55" y="190" width="210" height="18" rx="9" fill="#fbdfe9"/>
+              <!-- drip -->
+              <path d="M55 205 q10 20 20 0 q10 20 20 0 q10 20 20 0 q10 20 20 0 q10 20 20 0 q10 20 20 0 q10 20 20 0 q10 20 20 0 q10 20 20 0 v-20 h-210 z" fill="#fff6ef" opacity="0.9"/>
+              <!-- top tier -->
+              <rect x="95" y="128" width="130" height="68" rx="12" fill="#ffe3c2"/>
+              <rect x="95" y="128" width="130" height="16" rx="8" fill="#fff1de"/>
+              <!-- candles -->
+              <g class="candles">
+                <rect x="118" y="95" width="7" height="34" rx="3" fill="#ff9bb3"/>
+                <rect x="145" y="88" width="7" height="41" rx="3" fill="#9bd8ff"/>
+                <rect x="172" y="95" width="7" height="34" rx="3" fill="#ffd36e"/>
+                <rect x="197" y="100" width="7" height="29" rx="3" fill="#c9a6ff"/>
+              </g>
+              <g class="flames">
+                <ellipse cx="121.5" cy="90" rx="6" ry="10" class="flame"/>
+                <ellipse cx="148.5" cy="83" rx="6" ry="10" class="flame"/>
+                <ellipse cx="175.5" cy="90" rx="6" ry="10" class="flame"/>
+                <ellipse cx="200.5" cy="95" rx="6" ry="10" class="flame"/>
+              </g>
+              <!-- sprinkles -->
+              <g fill="#ffffff" opacity="0.85">
+                <circle cx="80" cy="220" r="3"/>
+                <circle cx="110" cy="235" r="3"/>
+                <circle cx="150" cy="215" r="3"/>
+                <circle cx="190" cy="235" r="3"/>
+                <circle cx="230" cy="218" r="3"/>
+                <circle cx="130" cy="160" r="2.6"/>
+                <circle cx="170" cy="170" r="2.6"/>
+                <circle cx="200" cy="155" r="2.6"/>
+              </g>
+            </svg>
+            <span class="cake-glow" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <p id="cake-hint" class="cake-hint">
+          <span class="pulse-dot"></span>
+          <span id="cake-hint-text"></span>
+        </p>
+      </div>
+
+      <div id="swipe-hint" class="swipe-hint" aria-hidden="true">
+        <span class="swipe-hint-chevron">⌄</span>
+      </div>
+    </section>
+
+    <!-- SCENE 2 happens as an overlay burst, triggered by JS, no separate markup needed -->
+    <div id="burst-layer" aria-hidden="true"></div>
+
+    <!-- SCENE 3: TIMELINE -->
+    <section id="scene-timeline" class="scene scene-timeline" hidden>
+      <div class="scene-inner">
+        <div class="gold-divider" aria-hidden="true"><span>✦</span></div>
+        <h2 id="timeline-title" class="section-title"></h2>
+        <p class="section-sub">Scroll through a few of our favourite moments</p>
+        <div id="timeline" class="timeline"></div>
+      </div>
+    </section>
+
+    <!-- SCENE 4: FINAL MESSAGE -->
+    <section id="scene-final" class="scene scene-final" hidden>
+      <div class="scene-inner">
+        <div class="gold-divider" aria-hidden="true"><span>✦</span></div>
+        <div class="final-cake" aria-hidden="true">🎂</div>
+        <h2 id="final-title" class="greeting-title"></h2>
+        <p id="final-message" class="greeting-message"></p>
+        <div class="final-decor" aria-hidden="true">🎈 🌸 🎉 💐 🎈</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="memories.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
