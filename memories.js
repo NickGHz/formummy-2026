@@ -94,5 +94,5 @@ const siteText = {
   timelineTitle: "Our Little Adventures 📸💕",
   finalTitle: "Once Again, Happy Birthday, Mummy! 🎂❤️",
   finalMessage:
-    "Hope you have a wonderful birthday, enjoy your holiday, take lots of pictures, eat lots of delicious food, and make plenty of happy memories! Have the best day ever! 🥳💕"
+    "Thank you for bringing me along on our Vietnam adventure and for another year filled with love, laughter, and good memories. I’m so grateful to have you as my mum. Enjoy your Scottland birthday holiday, eat well, take lots of pictures, and have the best day ever! 🥳💕"
 };
